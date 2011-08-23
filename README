@@ -1,0 +1,8 @@
+A collection of tiny Python modules that do interesting things
+
+anagrams.py: a module for generating solvable and unsolvable anagrams of arbitrary length
+debug_log.py: a pair of decorator functions
+request.py: module that requests a url and counts the occurrences of a regex in the response
+tokenizer.py: module of custom string tokenizer classes
+
+Emmett Butler 2011
