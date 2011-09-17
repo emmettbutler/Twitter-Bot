@@ -8,6 +8,8 @@ import time
 import sys
 import random
 
+#replace all racial slurs and profanity with derpy words
+
 def search_client():
     client = Twitter(domain='search.twitter.com')
     client.uriparts = ()
@@ -76,4 +78,4 @@ if __name__ == '__main__':
 			print "%s\n" % (tweet)
 			if not tweet.isspace():
 				post(post_client, tweet)
-		time.sleep(600)
+		time.sleep(random.randint(400, 700))
