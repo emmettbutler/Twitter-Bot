@@ -16,8 +16,8 @@ def search_client():
     return client
 
 def post_client():
-    CONSUMER_KEY='xU9hR4NPuWSRccEpRvmf4g'
-    CONSUMER_SECRET='ZRKSwWKp2eCzdTs9fl9DkOEnrgOHpetojldnZCnuo'
+    CONSUMER_KEY=''
+    CONSUMER_SECRET=''
 
     oauth_filename = os.environ.get('HOME', '') + os.sep + '.twitter_oauth'
     oauth_token, oauth_token_secret = read_token_file(oauth_filename)
