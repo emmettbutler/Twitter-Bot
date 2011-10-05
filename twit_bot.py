@@ -1,7 +1,7 @@
 from twitter.api import Twitter, TwitterError
 from twitter.oauth import OAuth, write_token_file, read_token_file
 from twitter.oauth_dance import oauth_dance
-from scraper import urban_dict, bash_irc, hybrid
+from scraper import urban_dict, bash_irc, hybrid, romance
 
 import os
 import time
@@ -16,8 +16,8 @@ def search_client():
     return client
 
 def post_client():
-    CONSUMER_KEY=''
-    CONSUMER_SECRET=''
+    CONSUMER_KEY='xU9hR4NPuWSRccEpRvmf4g'
+    CONSUMER_SECRET='ZRKSwWKp2eCzdTs9fl9DkOEnrgOHpetojldnZCnuo'
 
     oauth_filename = os.environ.get('HOME', '') + os.sep + '.twitter_oauth'
     oauth_token, oauth_token_secret = read_token_file(oauth_filename)
@@ -37,11 +37,13 @@ def compose_tweet(incoming=None):
 		incoming_asker = incoming['from_user']
 		last_id_replied = str(incoming['id'])
 
-	make = random.randint(0, 2)
+	make = random.randint(0, 3)
 	if make is 0:
 		response = urban_dict()[0:120]
 	elif make is 1:
 		response = bash_irc()[0:120]
+	elif make is 2:
+		response = romance()[0:120]
 	else:
 		response = hybrid()
 
