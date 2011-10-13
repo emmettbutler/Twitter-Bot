@@ -39,13 +39,13 @@ def compose_tweet(incoming=None):
 
 	make = random.randint(0, 20)
 	if make < 7:
-		response = urban_dict()[0:random.randint(40, 120)]
+		response = urban_dict()[0:random.randint(1, 120)]
 	elif make < 10:
-		response = sci_fi()[0:random.randint(40, 120)]
+		response = sci_fi()[0:random.randint(1, 120)]
 	elif make < 13:
-		response = romance()[0:random.randint(40, 120)]
+		response = romance()[0:random.randint(1, 120)]
 	else:
-		response = hybrid()
+		response = hybrid()[0:random.randint(1,120)]
 
 	if incoming is not None:
 		msg = '@%s %s (%s)' % (incoming_asker, response, last_id_replied[-4:])

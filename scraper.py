@@ -97,8 +97,8 @@ def bash_irc():
 def hybrid():
 	part1 = ""
 	part2 = ""
-	upper1 = random.randint(30, 60)
-	upper2 = random.randint(80, 100)
+	upper1 = random.randint(1, 80)
+	upper2 = random.randint(1, 80)
 	chooser = random.randint(0, 2)
 	if chooser == 0:
 		part1 = urban_dict()
