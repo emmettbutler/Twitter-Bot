@@ -1,7 +1,7 @@
 from twitter.api import Twitter, TwitterError
 from twitter.oauth import OAuth, write_token_file, read_token_file
 from twitter.oauth_dance import oauth_dance
-from scraper import urban_dict, bash_irc, hybrid, romance
+from scraper import urban_dict, bash_irc, hybrid, romance, sci_fi
 
 import os
 import time
@@ -37,13 +37,13 @@ def compose_tweet(incoming=None):
 		incoming_asker = incoming['from_user']
 		last_id_replied = str(incoming['id'])
 
-	make = random.randint(0, 3)
-	if make is 0:
-		response = urban_dict()[0:120]
-	elif make is 1:
-		response = bash_irc()[0:120]
-	elif make is 2:
-		response = romance()[0:120]
+	make = random.randint(0, 20)
+	if make < 7:
+		response = urban_dict()[0:random.randint(40, 120)]
+	elif make < 10:
+		response = sci_fi()[0:random.randint(40, 120)]
+	elif make < 13:
+		response = romance()[0:random.randint(40, 120)]
 	else:
 		response = hybrid()
 
