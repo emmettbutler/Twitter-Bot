@@ -37,13 +37,15 @@ def compose_tweet(incoming=None):
 		incoming_asker = incoming['from_user']
 		last_id_replied = str(incoming['id'])
 
-	make = random.randint(0, 20)
+	make = random.randint(0, 30)
 	length = random.randint(1, 120)
-	if make < 7:
+	if make < 10:
 		response = urban_dict()[0:length]
-	elif make < 10:
-		response = sci_fi()[0:length]
 	elif make < 13:
+		response = sci_fi()[0:length]
+	elif make < 17:
+		response = bash_irc()[0:length]
+	elif make < 20:
 		response = romance()[0:length]
 	else:
 		response = hybrid()[0:length]

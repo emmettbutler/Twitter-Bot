@@ -99,18 +99,22 @@ def hybrid():
 	part2 = ""
 	upper1 = random.randint(1, 80)
 	upper2 = random.randint(1, 80)
-	chooser = random.randint(0, 2)
+	chooser = random.randint(0, 3)
 	if chooser == 0:
 		part1 = urban_dict()
 	elif chooser == 1:
 		part1 = romance()
+	elif chooser == 2:
+		part2 = bash_irc()
 	else:
 		part1 = sci_fi()
-	chooser = random.randint(0, 2)
+	chooser = random.randint(0, 3)
 	if chooser == 0:
 		part2 = urban_dict()
 	elif chooser == 1:
 		part2 = romance()
+	elif chooser == 2:
+		part2 = bash_irc()
 	else:
 		part2 = sci_fi()
 	return (part1[:upper1] + " " + part2[:upper2])[0:random.randint(120, 140)]
