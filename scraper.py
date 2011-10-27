@@ -20,9 +20,9 @@ def random_word_range(string, length):
     string = string.split()
     punc_index = 0
     for word in string:
-        for punc in (',', '.'):
-            if punc in word:
-                punc_index = string.index(word)
+        if '.' in word:
+            punc_index = string.index(word)
+            break
     top = random.randint(0, len(string)/2)
     if punc_index:
         bottom = punc_index
