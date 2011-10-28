@@ -85,4 +85,4 @@ if __name__ == '__main__':
                     post(post_client, tweet)
         except TwitterError:
             continue
-        time.sleep(random.randint(400, 700))
+        time.sleep(random.randint(400, 1100))

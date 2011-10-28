@@ -36,13 +36,6 @@ def random_word_range(string, length):
             counter -= 1
     return ' '.join(string[top:bottom])
 
-    """
-    word = random.choice(string)
-    string = ' '.join(string)
-    index = string.index(word)
-    return string[index:]
-    """
-
 def sci_fi(short=False):
     length = 120
     if short:
