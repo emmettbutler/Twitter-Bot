@@ -29,7 +29,7 @@ def post_client():
             secure=True, api_version='1', domain='api.twitter.com')
 
 def search_public_feed(searcher, last_id_replied=""):
-    return searcher.search(q="e", since_id=last_id_replied)['results']
+    return searcher.search(q="e")['results']
 
 def parse_hashtags(tweet):
     hashtags = []
@@ -50,7 +50,7 @@ def compose_tweet(incoming=None):
                 hashtags.append(tag)
             last_id_replied = str(tweet['id'])
 
-    tags = random.randint(0, 1)
+    tags = random.randint(0, 2)
     tag = ""
     print hashtags
     if tags == 0 and len(hashtags) > 0:

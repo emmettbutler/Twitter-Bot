@@ -27,7 +27,10 @@ def random_word_range(string, length):
     if punc_index:
         bottom = punc_index
     else:
-        bottom = random.randint((len(string)/2)+1, len(string))
+        if len(string) > 1:
+            bottom = random.randint((len(string)/2)+1, len(string))
+        else:
+            bottom = 1
     counter = 0
     while len(' '.join(string[top:bottom])) > length:
         top = random.randint(0, len(string)/2)
