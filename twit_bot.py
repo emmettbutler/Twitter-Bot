@@ -62,16 +62,17 @@ def compose_tweet(incoming=None):
 
     make = random.randint(0, 30)
     response = ""
-    if make < 10:
-        response = urban_dict(length=length)
-    elif make < 13:
-        response = sci_fi(length=length)
-    elif make < 17:
-        response = bash_irc(length=length)
-    elif make < 25:
-        response = romance(length=length)
-    else:
-        response = hybrid()
+    while response == "":
+        if make < 10:
+            response = urban_dict(length=length)
+        elif make < 13:
+            response = sci_fi(length=length)
+        elif make < 17:
+            response = bash_irc(length=length)
+        elif make < 25:
+            response = romance(length=length)
+        else:
+            response = hybrid()
     print response
 
     return '%s %s' % (response, tag)
