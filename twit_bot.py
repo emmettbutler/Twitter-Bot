@@ -109,7 +109,7 @@ if __name__ == '__main__':
         except TwitterError,e:
             print e
             continue
-        timeslp = random.randint(2000, 10000)
+        timeslp = random.randint(400, 2000)
         if DEBUG:
             timeslp = 3
         time.sleep(timeslp)
