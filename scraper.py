@@ -36,11 +36,7 @@ def random_word_range(string, length):
             counter -= 1
     return ' '.join(string[top:bottom])
 
-def sci_fi(short=False):
-    length = 120
-    if short:
-        length = 60
-
+def sci_fi(length=120):
     books = {'0671877941': 20, '067131940X': 50, '0671319760': 76, '0743499107': 6, '067187800X': 26}
     book = random.choice(books.keys())
     chapter = str(random.randint(1, books[book]))
@@ -63,11 +59,7 @@ def sci_fi(short=False):
     return random_word_range(l, length)
 
 
-def romance(short=False):
-    length = 120
-    if short:
-        length = 60
-
+def romance(length=120):
     books = {'55003': ['maid-for-the-billionaire', 154], '562': ['101-degrees-fahrenheit', 19], '52931': ['claimed', 96], '74690': ['kiss-on-the-bridge', 152]}
     book = random.choice(books.keys())
     page = str(random.randint(2, books[book][1]))
@@ -85,11 +77,7 @@ def romance(short=False):
     return random_word_range(l, length)
 
 
-def urban_dict(short=False):
-    length = 120
-    if short:
-        length = 60
-
+def urban_dict(length=120):
     req = urllib2.Request("http://www.urbandictionary.com/random.php", headers={'User-Agent': "Magic Browser"})
     con = urllib2.urlopen(req)
     text = con.read()
@@ -99,11 +87,7 @@ def urban_dict(short=False):
     definition = definition.replace("&quot;", "")
     return random_word_range(definition, length)
 
-def bash_irc(short=False):
-    length = 120
-    if short:
-        length = 60
-
+def bash_irc(length=120):
     req = urllib2.Request("http://bash.org/?random", headers={'User-Agent': "Magic Browser"})
     con = urllib2.urlopen(req)
     text = con.read()
@@ -122,22 +106,22 @@ def hybrid():
     upper2 = random.randint(1, 80)
     chooser = random.randint(0, 3)
     if chooser == 0:
-        part1 = urban_dict(True)
+        part1 = urban_dict(length=60)
     elif chooser == 1:
-        part1 = romance(True)
+        part1 = romance(length=60)
     elif chooser == 2:
-        part2 = bash_irc(True)
+        part2 = bash_irc(length=60)
     else:
         part1 = sci_fi()
     chooser = random.randint(0, 3)
     if chooser == 0:
-        part2 = urban_dict(True)
+        part2 = urban_dict(length=60)
     elif chooser == 1:
-        part2 = romance(True)
+        part2 = romance(length=60)
     elif chooser == 2:
-        part2 = bash_irc(True)
+        part2 = bash_irc(length=60)
     else:
-        part2 = sci_fi(True)
+        part2 = sci_fi(length=60)
     return (part1[:upper1] + " " + part2[:upper2])
 
 if __name__ == '__main__':
