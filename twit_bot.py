@@ -9,6 +9,8 @@ import time
 import sys
 import random
 
+import secret
+
 #replace all racial slurs and profanity with derpy words
 
 def search_client():
@@ -17,15 +19,13 @@ def search_client():
     return client
 
 def post_client():
-    CONSUMER_KEY='xU9hR4NPuWSRccEpRvmf4g'
-    CONSUMER_SECRET='ZRKSwWKp2eCzdTs9fl9DkOEnrgOHpetojldnZCnuo'
 
     oauth_filename = os.environ.get('HOME', '') + os.sep + '.twitter_oauth'
     oauth_token, oauth_token_secret = read_token_file(oauth_filename)
 
     return Twitter(
         auth=OAuth(
-            oauth_token, oauth_token_secret, CONSUMER_KEY, CONSUMER_SECRET),
+            oauth_token, oauth_token_secret, secret.CONSUMER_KEY, secret.CONSUMER_SECRET),
             secure=True, api_version='1', domain='api.twitter.com')
 
 def search_public_feed(searcher, last_id_replied=""):
