@@ -50,7 +50,7 @@ def compose_tweet(incoming=None):
                 hashtags.append(tag)
             last_id_replied = str(tweet['id'])
 
-    tags = random.randint(0, 2)
+    tags = random.randint(0, 1)
     tag = ""
     print hashtags
     if tags == 0 and len(hashtags) > 0:
@@ -109,7 +109,7 @@ if __name__ == '__main__':
         except TwitterError,e:
             print e
             continue
-        timeslp = random.randint(400, 2000)
+        timeslp = 3600
         if DEBUG:
             timeslp = 3
         time.sleep(timeslp)
