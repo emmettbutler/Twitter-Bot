@@ -50,7 +50,7 @@ def compose_tweet(incoming=None):
                 hashtags.append(tag)
             last_id_replied = str(tweet['id'])
 
-    tags = random.randint(0, 1)
+    tags = random.randint(0, 3)
     tag = ""
     print hashtags
     if tags == 0 and len(hashtags) > 0:
