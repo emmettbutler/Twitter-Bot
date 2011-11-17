@@ -3,6 +3,7 @@ from twitter.api import Twitter, TwitterError
 from twitter.oauth import OAuth, write_token_file, read_token_file
 from twitter.oauth_dance import oauth_dance
 from scraper import urban_dict, bash_irc, hybrid, romance, sci_fi
+from mygengo import MyGengo
 
 import os
 import time
@@ -25,7 +26,7 @@ def post_client():
 
     return Twitter(
         auth=OAuth(
-            oauth_token, oauth_token_secret, secret.CONSUMER_KEY, secret.CONSUMER_SECRET),
+            oauth_token, oauth_token_secret, secret.TWITTER_CONSUMER_KEY, secret.TWITTER_CONSUMER_SECRET),
             secure=True, api_version='1', domain='api.twitter.com')
 
 def search_public_feed(searcher, last_id_replied=""):
@@ -73,6 +74,8 @@ def compose_tweet(incoming=None):
             response = romance(length=length)
         else:
             response = hybrid()
+    if random.randint(0,1) == 1:
+        response = translate(response)
     print response
 
     return '%s %s' % (response, tag)
@@ -81,6 +84,31 @@ def post(poster, msg):
     if poster.statuses.update(status=msg):
         return True
     return False
+
+def translate(text):
+    gengo = MyGengo(
+        public_key = secret.GENGO_PUBLIC_KEY,
+        private_key = secret.GENGO_PRIVATE_KEY,
+        sandbox = False
+    )
+    counter = 0
+    to_lang = 'en'
+    from_lang = 'ja'
+    while counter < 4: #even number = English result
+        translation = gengo.postTranslationJob(job = {
+            'type': 'text',
+            'slug': 'Translating with the myGengo API',
+            'body_src': text,
+            'lc_src': to_lang,
+            'lc_tgt': from_lang,
+            'tier': 'machine'
+        })
+        text = translation['response']['job']['body_tgt']
+        swap = to_lang
+        to_lang = from_lang
+        from_lang = swap
+        counter += 1
+    return text
 
 if __name__ == '__main__':
     last_id_replied = ""
@@ -106,8 +134,7 @@ if __name__ == '__main__':
             print "%s\n" % (tweet)
             if not tweet.isspace() and not DEBUG:
                 post(post_client, tweet)
-        except TwitterError,e:
-            print e
+        except:
             continue
         timeslp = 3600
         if DEBUG:
