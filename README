@@ -5,7 +5,7 @@ debug_log.py: a pair of decorator functions
 request.py: module that requests a url and counts the occurrences of a regex in the response
 tokenizer.py: module of custom string tokenizer classes
 
-twit_bot.py: the twitter posting client controlling the twitter bot [space_dad](http://twitter.com/space_dad)
-scraper.py: functions for scraping a number of free ebooks, urban dictionary, and more for use by [space_dad](http://twitter.com/space_dad)
+twit_bot.py: the twitter posting client controlling the twitter bot space_dad at http://twitter.com/space_dad
+scraper.py: functions for scraping a number of free ebooks, urban dictionary, and more for use by space_dad at http://twitter.com/space_dad
 
 Emmett Butler 2011
