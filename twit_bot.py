@@ -51,6 +51,7 @@ def compose_tweet(incoming=None):
     response = "AA"
     hashtags = []
     tags = random.randint(0, 3)
+    tag = ""
 
     if incoming is not None and tags == 0:
         print "Searching for hashtags..." if DEBUG else ''
@@ -101,10 +102,7 @@ def compose_tweet(incoming=None):
         response = translate(response)
         print "%s" % response if DEBUG else ''
 
-    if tags == 0:
-        reponse = response + " " + tag
-
-    return response
+    return '%s %s' % (response, tag)
 
 def post(poster, msg):
     if poster.statuses.update(status=msg):
