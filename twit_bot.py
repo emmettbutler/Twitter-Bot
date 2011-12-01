@@ -121,7 +121,7 @@ def translate(text):
     while counter < 4: #even number = English result
         translation = gengo.postTranslationJob(job = {
             'type': 'text',
-            'slug': 'Translating with the myGengo API',
+            'slug': 'the_game',
             'body_src': text,
             'lc_src': to_lang,
             'lc_tgt': from_lang,
