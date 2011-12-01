@@ -23,7 +23,7 @@ def get_unsolvable(length):
     while not is_unsolvable(word): #if the generated puzzle is solvable
         word = build_unsolvable(length) #try again
     return word
-    
+
 #build_unsolvable: returns a string of randomly selected characters of length (length)
 def build_unsolvable(length):
     word = list()
@@ -35,7 +35,7 @@ def build_unsolvable(length):
     return "".join(word)
 
 #is_unsolvable: returns false if (word) is an anagram of any dictionary word, true otherwise
-def is_unsolvable(word): 
+def is_unsolvable(word):
     for x in words:
         if is_anagram(word, x):
             return False
@@ -46,7 +46,7 @@ def signature(word):
     prime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
     signature = 1
     for i in list(word): #for each character
-        if ord(i) - ord('a') >= 0: 
+        if ord(i) - ord('a') >= 0:
             signature *= prime[ord(i) - ord('a')] #multiply the total by the corresponding prime number
     return signature
 

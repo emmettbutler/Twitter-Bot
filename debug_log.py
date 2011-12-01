@@ -3,7 +3,7 @@ def debug_log(fn):
         print args, kwargs
         return fn(*args, **kwargs)
     return wrapper_fn
-    
+
 cache = list()
 
 def memoize(fn):
