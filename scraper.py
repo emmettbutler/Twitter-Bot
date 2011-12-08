@@ -136,7 +136,7 @@ def bash_irc(length=120):
         return urban_dict()
 
 def hybrid():
-    upper1, upper2 = random.randint(1, 80), random.randint(1, 80)
+    upper1,upper2 = (random.randint(1, 80) for a in range(0,2))
 
     chooser = random.randint(0, 3)
     part1 = random_site_scrape(chooser, 60)
