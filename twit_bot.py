@@ -150,7 +150,10 @@ if __name__ == '__main__':
     while True:
         try:
             if search:
-                results = search_public_feed(search_client, last_id_replied=last_id_replied)
+                results = search_public_feed(
+                                search_client,
+                                last_id_replied=last_id_replied
+                            )
                 tweet = compose_tweet(incoming=results)
             else:
                 tweet = compose_tweet()
