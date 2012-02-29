@@ -102,6 +102,8 @@ def compose_tweet(incoming=None):
         response = translate(response)
         print "%s" % response if DEBUG else ''
 
+    #disable hashtags
+    tag = ""
     return '%s %s' % (response, tag)
 
 def post(poster, msg):
