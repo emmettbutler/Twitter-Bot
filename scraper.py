@@ -4,11 +4,13 @@ import random
 
 headers = {'User-Agent': "Magic Browser"}
 
+
 def escapes(string):
     string = re.sub(r"<(.|\n)*?>", " ", string)
     string = re.sub("(Urban Dictionary|Framed|Back|Next)", "", string)
     string = re.sub(r"(\xa6|\x98|\xe2|\x80|\x99|\x9d|\x9c|\x92|\&.*;)", "", string)
     return string
+
 
 def random_word_range(string, length):
     string = string.split()
@@ -17,24 +19,24 @@ def random_word_range(string, length):
         if '.' in word:
             punc_index = string.index(word)
             break
-    top = random.randint(0, len(string)/2)
+    top = random.randint(0, len(string) / 2)
     if punc_index:
         bottom = punc_index
     else:
         if len(string) > 1:
-            bottom = random.randint((len(string)/2)+1, len(string))
+            bottom = random.randint((len(string) / 2) + 1, len(string))
         else:
             bottom = 1
     counter = 0
     while len(' '.join(string[top:bottom])) > length:
-        top = random.randint(0, len(string)/2)
-        bottom = random.randint((len(string)/2)+1, len(string)-counter)
-        if counter > (len(string)/2)+2:
+        top = random.randint(0, len(string) / 2)
+        bottom = random.randint((len(string) / 2) + 1, len(string) - counter)
+        if counter > (len(string) / 2) + 2:
             counter -= 1
     return ' '.join(string[top:bottom])
 
-def sci_fi(length=120):
 
+def sci_fi(length=120):
     #the unique url segment corresponding to a book and the number of
     #chapters it has
     books = {
@@ -50,12 +52,12 @@ def sci_fi(length=120):
     chapter = str(random.randint(1, books[book]))
 
     #build the url, starting with the first part
-    url = "http://www.webscription.net/10.1125/Baen/"+book+"/"+book
+    url = "http://www.webscription.net/10.1125/Baen/" + book + "/" + book
     #include the proper number of underscores based on the number of digits
     #in the chapter number
-    for i in range(4-len(str(chapter))):
+    for i in range(4 - len(str(chapter))):
         url += "_"
-    url += chapter+".htm"
+    url += chapter + ".htm"
 
     req = urllib2.Request(url, headers=headers)
     con = urllib2.urlopen(req)
@@ -85,7 +87,7 @@ def romance(length=120):
     book = random.choice(books.keys())
     page = str(random.randint(2, books[book][1]))
 
-    url = "http://www.smashwords.com/extreader/read/"+book+"/"+page+"/"+books[book][0]
+    url = "http://www.smashwords.com/extreader/read/" + book + "/" + page + "/" + books[book][0]
     req = urllib2.Request(url, headers=headers)
     con = urllib2.urlopen(req)
     text = con.read()
@@ -113,6 +115,7 @@ def urban_dict(length=120):
     definition = escapes(matches.group(0))
     return random_word_range(definition, length)
 
+
 def bash_irc(length=120):
     req = urllib2.Request(
         "http://bash.org/?random",
@@ -135,8 +138,9 @@ def bash_irc(length=120):
     else:
         return urban_dict()
 
+
 def hybrid():
-    upper1,upper2 = (random.randint(1, 80) for a in range(0,2))
+    upper1, upper2 = (random.randint(1, 80) for a in range(0, 2))
 
     chooser = random.randint(0, 3)
     part1 = random_site_scrape(chooser, 60)
@@ -145,6 +149,7 @@ def hybrid():
     part2 = random_site_scrape(chooser, 60)
 
     return (part1[:upper1] + " " + part2[:upper2])
+
 
 def random_site_scrape(chooser, length):
     if chooser == 0:

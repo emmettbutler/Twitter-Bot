@@ -1,7 +1,5 @@
-import twitter
-from twitter.api import Twitter, TwitterError
-from twitter.oauth import OAuth, write_token_file, read_token_file
-from twitter.oauth_dance import oauth_dance
+from twitter.api import Twitter
+from twitter.oauth import OAuth, read_token_file
 from scraper import urban_dict, bash_irc, hybrid, romance, sci_fi
 from mygengo import MyGengo
 
@@ -14,10 +12,12 @@ import secret
 
 #replace all racial slurs and profanity with derpy words
 
+
 def search_client():
     client = Twitter(domain='search.twitter.com')
     client.uriparts = ()
     return client
+
 
 def post_client():
 
@@ -36,8 +36,10 @@ def post_client():
         domain='api.twitter.com'
     )
 
+
 def search_public_feed(searcher, last_id_replied=""):
     return searcher.search(q="e")['results']
+
 
 def parse_hashtags(tweet):
     hashtags = []
@@ -46,6 +48,7 @@ def parse_hashtags(tweet):
         if word[0] == '#':
             hashtags.append(words[words.index(word)])
     return hashtags
+
 
 def compose_tweet(incoming=None):
     response = "AA"
@@ -57,10 +60,8 @@ def compose_tweet(incoming=None):
         print "Searching for hashtags..." if DEBUG else ''
         for tweet in incoming:
             incoming_tweet = tweet['text'].replace('@space_dad', '')
-            incoming_asker = tweet['from_user']
             for tag in parse_hashtags(incoming_tweet):
                 hashtags.append(tag)
-            last_id_replied = str(tweet['id'])
 
     if tags == 0 and len(hashtags) > 0:
         print hashtags if DEBUG else ''
@@ -96,8 +97,7 @@ def compose_tweet(incoming=None):
             response = hybrid()
             print response if DEBUG else ''
 
-
-    if random.randint(0,1) == 1:
+    if random.randint(0, 1) == 1:
         print "Translating tweet..." if DEBUG else ''
         response = translate(response)
         print "%s" % response if DEBUG else ''
@@ -106,22 +106,24 @@ def compose_tweet(incoming=None):
     tag = ""
     return '%s %s' % (response, tag)
 
+
 def post(poster, msg):
     if poster.statuses.update(status=msg):
         return True
     return False
 
+
 def translate(text):
     gengo = MyGengo(
-        public_key = secret.GENGO_PUBLIC_KEY,
-        private_key = secret.GENGO_PRIVATE_KEY,
-        sandbox = False
+        public_key=secret.GENGO_PUBLIC_KEY,
+        private_key=secret.GENGO_PRIVATE_KEY,
+        sandbox=False
     )
     counter = 0
     to_lang = 'en'
     from_lang = 'ja'
-    while counter < 4: #even number = English result
-        translation = gengo.postTranslationJob(job = {
+    while counter < 4:  # even number = English result
+        translation = gengo.postTranslationJob(job={
             'type': 'text',
             'slug': 'the_game',
             'body_src': text,
