@@ -79,6 +79,9 @@ def romance(length=120):
     #list of book ids, titles, and corresponding number of pages
     #both book id and title are needed to build the urls
     books = {
+        '85389': ['heaven-can-wait', 346],
+        '46442': ['convenient-love', 22],
+        '75112': ['letter-of-love', 40],
         '55003': ['maid-for-the-billionaire', 154],
         '562': ['101-degrees-fahrenheit', 19],
         '52931': ['claimed', 96],
