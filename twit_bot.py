@@ -166,6 +166,6 @@ if __name__ == '__main__':
                 post(post_client, tweet)
         except:
             continue
-        timeslp = 3 if DEBUG else 3600
+        timeslp = 3 if DEBUG else 1200
         print "\n\n" if DEBUG else ''
         time.sleep(timeslp)
