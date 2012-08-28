@@ -4,7 +4,6 @@ import random
 
 headers = {'User-Agent': "Magic Browser"}
 
-
 def escapes(string):
     string = re.sub(r"<(.|\n)*?>", " ", string)
     string = re.sub("(Urban Dictionary|Framed|Back|Next)", "", string)
@@ -83,7 +82,7 @@ def romance(length=120):
         '46442': ['convenient-love', 22],
         '75112': ['letter-of-love', 40],
         '55003': ['maid-for-the-billionaire', 154],
-        '562': ['101-degrees-fahrenheit', 19],
+        '562'  : ['101-degrees-fahrenheit', 19],
         '52931': ['claimed', 96],
         '74690': ['kiss-on-the-bridge', 152]
     }

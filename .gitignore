@@ -1,4 +1,5 @@
 *.pyc
 *.swp
 secret.py
+storm_secret.py
 *.un~

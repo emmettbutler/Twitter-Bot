@@ -12,7 +12,6 @@ import secret
 
 #replace all racial slurs and profanity with derpy words
 
-
 def search_client():
     client = Twitter(domain='search.twitter.com')
     client.uriparts = ()
