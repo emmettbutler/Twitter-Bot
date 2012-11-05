@@ -48,15 +48,15 @@ if __name__ == "__main__":
             statuses.append(s)
 
     store = defaultdict(list)
+    for s in statuses:
+        words = s.text.split(' ')
+        for word in words:
+            if words.index(word) < len(words) - 1:
+                index = words.index(word) + 1
+                store[word].append(words[index])
+
 
     while True:
-        for s in statuses:
-            words = s.text.split(' ')
-            for word in words:
-                if words.index(word) < len(words) - 1:
-                    index = words.index(word) + 1
-                    store[word].append(words[index])
-
         word = random.choice(store.keys())
         status = word
         while len(status) < 50 and store[word]:
