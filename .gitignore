@@ -2,4 +2,6 @@
 *.swp
 secret.py
 storm_secret.py
+hentai_secret.py
 *.un~
+nohup.out
