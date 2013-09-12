@@ -31,7 +31,7 @@ def post_client():
             secret.TWITTER_CONSUMER_SECRET
         ),
         secure=True,
-        api_version='1',
+        api_version='1.1',
         domain='api.twitter.com'
     )
 
@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
     search_client = search_client()
     post_client = post_client()
-    search = True
+    search = False
 
     DEBUG = False
     if len(sys.argv) == 2:
